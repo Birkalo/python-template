@@ -1,0 +1,56 @@
+image: docker:19.03.1
+
+stages:
+- lint
+- unit-test
+- build
+
+.pythonsetup_template:  &pythonsetup
+  before_script:
+    - apk add --update
+    - apk add python3 py3-pip python3-dev
+    - pip3 install virtualenv
+    - pip3 install --upgrade pip --quiet
+    - apk add make gcc musl-dev libffi-dev openssl-dev postgresql-dev libressl-dev
+
+lint:
+  image: python:3.7
+  stage: lint
+  script:
+    - pip3 install --upgrade pip --quiet
+    - pip3 install flake8
+    - flake8 main_directory --ignore=E501
+
+unit-test:
+  stage: unit-test
+  <<: *pythonsetup
+  services:
+    - docker:19.03.0-dind
+  variables:
+    MYSQL_DATABASE: "pythonProjectTest"
+    MYSQL_ROOT_PASSWORD: "password"
+  script:
+    - docker info
+    - export TEST_ENVIRONMENT=gitlab
+    - make mysql-docker-image
+    - make mysql-docker-container
+    - make unit-test
+  artifacts:
+    paths:
+      - logs/
+    expire_in: 1 day
+    when: always
+
+build-python-package:
+  stage: build
+  <<: *pythonsetup  
+  script:
+    - make build
+  only:
+    - master
+  artifacts:
+    paths:
+      - logs/
+      - dist/
+    expire_in: 1 day
+    when: always
