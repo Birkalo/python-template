@@ -138,3 +138,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Acknowledgments
 * Billie Thompson - Wrote the template readme - [PurpleBooth](https://github.com/PurpleBooth)
+* Vikash Kothary - Gave helpful feedback on the makefile - [VikashKothary](https://gitlab.com/VikashKothary)
