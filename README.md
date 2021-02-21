@@ -61,7 +61,7 @@ You can lint your project with `make lint`, which will return nothing when it su
 ```
 $ make lint
 Running flake8 lint
-```1
+```
 The linting is performed inside of the virtual environment, and currently excludes "line too long" errors (E501).
 
 ## Building
@@ -96,6 +96,14 @@ The package is built in an identical fashion via gitlab-ci, so you can be assure
 * [Makefile](https://www.gnu.org/software/make/manual/make.html) - Process management
 * [Gitlab CI](https://docs.gitlab.com/ee/ci/) - The CI-CD process used
 * [MySQL](https://dev.mysql.com/) - Database backing project
+
+## License
+
+This program is Free Software: You can use, study share and improve it at your
+will. Specifically you can redistribute and/or modify it under the terms of the
+[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
+published by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
 ## Versioning
 
