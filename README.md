@@ -36,12 +36,36 @@ The project has the following components:
  - GNU Make
 
 
-### Installing
+### Usage
 
+## Getting started
 You can clone this repo and use it as the basis of your new python project.
 Once you have the code locally you can perform a Find & Replace on the term 'project_name' to rename the relevant variables.
 
 Remember! You need to remove the `.git` directory to detach it from this repository, and initialise your own before you commit any changes to git.  
+
+The makefile has a comprehensive set of commands to help you build & test your project:
+```
+$ make
+
+ Usage: make <command>
+
+Commands:
+  help       'make' & 'make help' list the available subcommands and descriptions.
+  run        Runs the main module without building the package
+  unit-test  Uses pytest to execute all tests in main_directory/test
+  lint       Lint python modules with flake8
+  install    Install the python package to your virtual environment
+  all        Builds package, installs it to virtual environment, and runs it alongside the sql container
+  venv       Creates a python3.7 virtualenv
+  logs       Creates Log output directory.
+  build      Build only the python package
+  clean-logs Deletes log directory
+  clean-venv Deletes virtual environment
+  clean-build Removes python package
+  clean-docker Stops container, and deletes image
+  clean-all  Performs all 'clean-*' operations
+```
 
 ## Running the tests
 
@@ -61,7 +85,7 @@ You can lint your project with `make lint`, which will return nothing when it su
 ```
 $ make lint
 Running flake8 lint
-```1
+```
 The linting is performed inside of the virtual environment, and currently excludes "line too long" errors (E501).
 
 ## Building
@@ -73,9 +97,8 @@ If you make any changes and need to rebuild, you must run `make clean` to remove
 The build output is directed to `logs/python_build.log`
 
 ```
-$ make clean
+$ make clean-venv
 Removing Virtualenv
-Removing logs folder
 
 $ make build
 Creating new virtualenv in ./venv
@@ -96,6 +119,14 @@ The package is built in an identical fashion via gitlab-ci, so you can be assure
 * [Makefile](https://www.gnu.org/software/make/manual/make.html) - Process management
 * [Gitlab CI](https://docs.gitlab.com/ee/ci/) - The CI-CD process used
 * [MySQL](https://dev.mysql.com/) - Database backing project
+
+## License
+
+This program is Free Software: You can use, study share and improve it at your
+will. Specifically you can redistribute and/or modify it under the terms of the
+[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
+published by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
 ## Versioning
 
