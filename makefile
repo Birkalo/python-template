@@ -11,6 +11,8 @@ define install_py_package
 	$(SILENT)venv/bin/pip3 install dist/project_name.tar.gz > logs/package_installation.log
 endef
 
+pyVersion=3.10
+
 # This should be the first target so that "make" alone prints usage.
 .DESC: help #: 'make' & 'make help' list the available subcommands and descriptions.
 help:
@@ -55,15 +57,15 @@ mysql-docker-image:
 	$(SILENT)docker build . -t mysql-image
 	$(SILENT)touch $@
 
-.DESC: venv #: Creates a python3.7 virtualenv
+.DESC: venv #: Creates a python virtualenv with the specified version
 venv:
 	@echo "Creating new virtualenv in ./venv"
-	$(SILENT)python3.7 -m venv venv/
-	$(SILENT)venv/bin/pip3.7 install wheel
+	$(SILENT)python$(pyVersion) -m venv venv/
+	$(SILENT)venv/bin/pip$(pyVersion) install wheel
 
 .DESC: logs #: Creates Log output directory.
 logs:
-	$(SILENT)mkdir -p logs/	
+	$(SILENT)mkdir -p logs/
 
 .DESC: build #: Build only the python package
 build: dist/project_name.tar.gz
@@ -71,7 +73,7 @@ build: dist/project_name.tar.gz
 dist/project_name.tar.gz: venv logs
 	@echo "Building python package"
 	$(SILENT)rm -f dist/project_name*.tar.gz
-	$(SILENT)venv/bin/python3.7 setup.py sdist > logs/python_build.log
+	$(SILENT)venv/bin/python$(pyVersion) setup.py sdist > logs/python_build.log
 	$(SILENT)cp dist/PROJECT_NAME*.tar.gz $@
 
 .DESC: clean-logs #: Deletes log directory
