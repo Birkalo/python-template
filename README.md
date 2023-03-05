@@ -32,7 +32,7 @@ The project has the following components:
 ### Prerequisites
 
  - Docker
- - Python 3.7
+ - Python 3
  - GNU Make
 
 
@@ -57,7 +57,7 @@ Commands:
   lint       Lint python modules with flake8
   install    Install the python package to your virtual environment
   all        Builds package, installs it to virtual environment, and runs it alongside the sql container
-  venv       Creates a python3.7 virtualenv
+  venv       Creates a python3 virtualenv
   logs       Creates Log output directory.
   build      Build only the python package
   clean-logs Deletes log directory
@@ -86,7 +86,7 @@ You can lint your project with `make lint`, which will return nothing when it su
 $ make lint
 Running flake8 lint
 ```
-The linting is performed inside of the virtual environment, and currently excludes "line too long" errors (E501).
+The linting is performed inside the virtual environment, and currently excludes "line too long" errors (E501).
 
 ## Building
 You can build this python project into a pip installable package with `make build`. You can also use `make all` to build,

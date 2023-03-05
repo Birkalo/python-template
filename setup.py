@@ -15,7 +15,7 @@ setup(
     version=version_number,
     description=('PROJECT DESCRIPTION'),
     author='Toby Birkett',
-    author_email='tobyrbirkett@gmail.com',
+    author_email='python-template@toby.8shield.net',
     url='-',
     packages=find_packages(),
     scripts=['main_directory/main_module.py'],

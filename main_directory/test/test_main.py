@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3.10
 
 
 from main_directory.main_module import return_2

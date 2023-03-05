@@ -1,4 +1,4 @@
-image: docker:19.03.1
+image: docker:20.10.16
 
 stages:
 - lint
@@ -14,7 +14,7 @@ stages:
     - apk add make gcc musl-dev libffi-dev openssl-dev postgresql-dev libressl-dev
 
 lint:
-  image: python:3.7
+  image: python:3.10
   stage: lint
   script:
     - pip3 install --upgrade pip --quiet
@@ -25,7 +25,7 @@ unit-test:
   stage: unit-test
   <<: *pythonsetup
   services:
-    - docker:19.03.0-dind
+    - docker:20.10.16-dind
   variables:
     MYSQL_DATABASE: "pythonProjectTest"
     MYSQL_ROOT_PASSWORD: "password"
