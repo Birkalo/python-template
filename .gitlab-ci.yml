@@ -14,7 +14,7 @@ stages:
     - apk add make gcc musl-dev libffi-dev openssl-dev postgresql-dev libressl-dev
 
 lint:
-  image: python:3.7
+  image: python:3.10
   stage: lint
   script:
     - pip3 install --upgrade pip --quiet
