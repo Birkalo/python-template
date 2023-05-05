@@ -1,1 +1,2 @@
-setuptools
+setuptools==67.7.2
+pymysql==1.0.3
